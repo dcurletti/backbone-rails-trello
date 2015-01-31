@@ -1,0 +1,51 @@
+TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
+
+  template: JST["boardShow"],
+
+  initialize: function (options) {
+    // Need to add parse method to model
+    // this.collection = this.model.lists();
+    this.model = options.model;
+    this.listenTo(this.model, 'sync', this.render);
+    // this.listenTo(this.collection, 'add', this.addToList)
+  },
+
+  orderOptions: {
+    modelName: "list",
+    subviewContainer: "#lists"
+  },
+
+  render: function () {
+    var renderedContent = this.template({
+      model: this.model
+    });
+
+    this.$el.html(renderedContent);
+    // this.renderLists();
+    this.renderForm();
+  },
+
+  renderForm: function () {
+    var listFormView = new TrelloClone.Views.ListForm();
+    debugger;
+    this.addSubView('#form', listFormView)
+  }
+
+  // addToList: function () {
+  //   var listItemView = new TrelloClone.Views.ListShow({
+  //     model: this.model
+  //   });
+  //   debugger;
+  //   this.addSubView('#lists', listItemView)
+  // },
+
+  // renderLists: function () {
+  //   this.collection.each(this.addToList.bind(this));
+  //   this.$('#lists').sortable();
+  // }
+
+
+})
+
+
+  <h4><%= list.escape("title") %></h4>

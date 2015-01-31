@@ -14,10 +14,7 @@
     <ul class="nav navbar-nav navbar-right">
     <% if signed_in? %>
       <li id='add-dropdown' class='dropdown'>
-        <button
-          class='dropdown-toggle navbar-btn btn btn-primary'
-          data-toggle='dropdown'><span class='glyphicon glyphicon-plus'></span>
-        </button>
+        <a href="#/boards/new" class='navbar-btn btn btn-primary btn-sm' role="button"><small><span class='glyphicon glyphicon-plus glyphicon-small'></span></small></a>
       </li>
       <li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-primary navbar-btn" %></li>
     <% else %>
