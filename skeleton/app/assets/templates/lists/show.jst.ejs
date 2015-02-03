@@ -1,7 +1,17 @@
-<div id="name">
-  <h4>TESTING</h4>
+<div class="list-header">
+  <h4><%= list.get('title') %></h4>
+
+  <div class="dropdown">
+  <button class="list-menu btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+    <span class="glyphicon glyphicon-circle-arrow-down"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a id="delete" role="menuitem" tabindex="-1" href="#">Action</a></li>
+  </ul>
 </div>
 
-<div class="list-cards">
+</div>
+
+<div class="card-wrapper">
 
 </div>

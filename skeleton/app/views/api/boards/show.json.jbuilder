@@ -5,8 +5,8 @@
 # json.extract! @board, :title, :lists
 json.title @board.title
 json.lists @board.lists do |list|
-  json.(list, :title, :ord)
+  json.(list, :title, :ord, :id)
   json.cards list.cards do |card|
-    json.(card, :title, :description, :ord)
+    json.(card, :title, :description, :ord, :id)
   end
 end

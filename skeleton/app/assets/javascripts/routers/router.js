@@ -26,7 +26,7 @@ TrelloClone.Routers.Router = Backbone.Router.extend({
 
   boardShow: function(id){
     // Need to change this to getOrFetch
-    var board = this.collection.get(id);
+    var board = this.collection.getOrFetch(id);
     var boardShowView = new TrelloClone.Views.BoardShow({
       collection: this.collection,
       model: board
@@ -37,10 +37,10 @@ TrelloClone.Routers.Router = Backbone.Router.extend({
 
   _swapView: function(newView){
     if (this._currentView) {
-      this.currentView.remove();
+      this._currentView.remove();
     }
 
-    this.currentView = newView;
+    this._currentView = newView;
     this.$rootEl.html(newView.render().$el)
   }
 

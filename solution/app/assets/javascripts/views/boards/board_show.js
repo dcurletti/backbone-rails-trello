@@ -21,6 +21,7 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
   },
 
   addList: function (list) {
+    debugger;
     var view = new TrelloClone.Views.ListShow({
       model: list
     });

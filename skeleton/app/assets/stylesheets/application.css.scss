@@ -22,4 +22,35 @@
   padding: 20px 0px 20px 0px;
   margin-right: 5px;
   margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.list {
+  background-color: #91A8DB;
+  padding: 20px 0px 20px 0px;
+}
+
+.list-wrapper {
+  background-color: #52B3D1;
+  width: 200px;
+  height: 100px;
+  margin: 0px 10px 5px 0px;
+  float: left;
+  border-radius: 5px;
+}
+
+.list-form {
+  background-color: #52B3D1;
+  width: 200px;
+  height: 100px;
+  margin: 0px 10px 5px 0px;
+  float: left;
+  border-radius: 5px;
+}
+
+.list-header {
+  float: left;
+}
+
+.backdrop {
 }

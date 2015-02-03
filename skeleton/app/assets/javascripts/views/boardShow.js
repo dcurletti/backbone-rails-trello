@@ -7,11 +7,20 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
     this.model = options.model;
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addToList);
+    this.listenTo(this.collection, 'remove', this.render);
   },
 
   orderOptions: {
-    modelName: "list",
-    subviewContainer: "#lists"
+    modelName: "list"
+  },
+
+  addToList: function (list) {
+    var listItemView = new TrelloClone.Views.ListShow({
+      collection: this.collection,
+      model: list
+    });
+
+    this.addSubview('#lists', listItemView)
   },
 
   render: function () {
@@ -21,30 +30,23 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
 
-    this.renderLists();
     this.renderForm();
+    this.renderLists();
 
     return this;
   },
 
   renderForm: function () {
-    var listFormView = new TrelloClone.Views.ListForm();
+    var listFormView = new TrelloClone.Views.ListForm({
+      collection: this.collection
+    });
     this.addSubview('#form', listFormView)
   },
 
 
-  addToList: function (list) {
-    var listItemView = new TrelloClone.Views.ListShow({
-      model: list
-    });
-    this.addSubview('#lists', listItemView)
-    // var listFormView = new TrelloClone.Views.ListForm();
-    // this.addSubview('#form', listFormView);
-  },
-
   renderLists: function () {
     this.model.lists().each(this.addToList.bind(this));
-    this.$('#lists').sortable();
+    // this.$('#lists').sortable();
   }
 
 

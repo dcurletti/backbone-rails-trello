@@ -2,12 +2,11 @@ TrelloClone.Views.BoardItem = Backbone.View.extend({
 
   template: JST["boardItem"],
 
-  tagName: "div",
-
   className: "board col-xs-3",
 
   events: {
-    "click": "showBoard"
+    'click #delete': "deleteBoard",
+    "click p": "showBoard"
   },
 
   render: function () {
@@ -17,7 +16,12 @@ TrelloClone.Views.BoardItem = Backbone.View.extend({
   },
 
   showBoard: function (event){
+    console.log('hello')
     Backbone.history.navigate('/boards/' + this.model.id, {trigger: true});
-  }
+  },
 
+  deleteBoard: function (event) {
+    event.stopPropagation();
+    this.model.destroy();
+  }
 })
